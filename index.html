@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dokumentacja Open AI</title>                                               
+        <style>    
+            body , html {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                background-color: #4b8237;
+                margin: 0 auto;
+            }
+            .part {
+                width: 100%;
+                height: 540%;
+                text-align: center;
+            }
+            .border {
+                background-color:#c3c685;
+                width: 50%;
+                height: 100%;
+                margin:  0 auto ;
+                border-radius: 1em;
+            }
+            #code {
+                background-color: black;
+                color: white;
+                padding: 0 0 0 1em;
+                
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="part">       
+                                                                                        <!-- Part left text font other things-->
+            <br>            
+
+            <div class="border">                                                                      <!-- main text-->
+                <h1> Open AI </h1>      
+                <p>
+                    Open AI jest jeden z pierwszych Chat Botów który jest tak silną sztuczną inteligencją,
+                    napewno jest to jakiś przełom w świecie IT prostym pytaniem robot może wygenerować grę
+                    która ma bez błędny kod źródłowy, dla prostych projektów obejdzie się bez debugowania a
+                    dla bardziej skomplikowanych programów wystarczy mu zadawać dobre pytania tak aby dostać 
+                    oczekiwaną odpowiedź.
+                </p>
+
+                <p>
+                    Sam bot może praktycznie wszystko o czy sobie pomyślicie, oczywiście w interfejsie 
+                    graficznym tu jest przykład, gra podobna do Flappy birds a tu dam kod źródłowy. Jest
+                    oczywiście sam kod a obraski do przykładowej animacji czy też do obiektów musimy dać
+                    sami ale jednak sama gra całe obramowanie jest już. 
+                    <div id="code"><pre align="left">
+import pygame
+import random
+
+# Initialize pygame
+pygame.init()
+
+# Set the window size
+window_size = (400, 708)
+
+# Create the window
+screen = pygame.display.set_mode(window_size)
+
+# Set the title of the window
+pygame.display.set_caption("Flappy Bird")
+
+# Load the images
+bird_images = [pygame.image.load("bird1.png"), pygame.image.load("bird2.png"), pygame.image.load
+("bird3.png")]
+
+# Load the pipe image
+pipe_image = pygame.image.load("pipe.png")
+
+# Load the base image
+base_image = pygame.image.load("base.png")
+
+# Load the font
+font = pygame.font.Font("flappy_font.ttf", 36)
+
+# Set the gravity
+gravity = 0.25
+
+# Set the lift
+lift = -4
+
+# Set the bird's initial position
+bird_y = window_size[1] / 2
+
+# Set the bird's initial velocity
+bird_velocity = 0
+
+# Set the bird's initial frame
+bird_frame = 0
+
+# Set the frame rate
+frame_rate = 30
+
+# Set the pipe distance
+pipe_distance = 200
+
+# Set the pipe width
+pipe_width = 100
+
+# Set the pipe speed
+pipe_speed = -2
+
+# Set the base speed
+base_speed = -2
+
+# Set the base y position
+base_y = window_size[1] - base_image.get_height()
+
+# Set the initial pipe position
+pipe_x = window_size[0] + pipe_image.get_width()
+
+# Set the initial score
+score = 0
+
+# Set the initial game state
+game_state = "playing"
+
+# Set the clock
+clock = pygame.time.Clock()
+
+while True:
+    # Handle events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                bird_velocity = lift
+
+    # Update the game state
+    if game_state == "playing":
+        # Update the bird's velocity
+        bird_velocity += gravity
+
+        # Update the bird's position
+        bird_y += bird_velocity
+
+        # Update the bird's frame
+        bird_frame += 1
+        if bird_frame > 2:
+            bird_frame = 0
+
+        # Update the pipe position
+        pipe_x += pipe_speed
+
+        # Update the base position
+        base_x += base_speed
+        if base_x < -base_image.get_width():
+            base_x = 0
+
+        # Check for collision with the base
+        if bird_y + bird_images[0].get_height() > base_y:
+            game_state = "game over"
+
+        # Check for collision with the pipes
+        if (bird_y < pipe_y + pipe_image.get_height() and bird_y +
+                    </pre></div>
+                </p>
+
+                <p>
+                    Tutaj spróbowałem wygenerować stronę za pomocą chat bota w klimacie świąt kod źródłowy:
+                </p>    
+                <img src="strona bota.png" style="width:40%;">
+                <p>
+                    Sama strona wygląda tak:
+                </p>
+                <img src="strona boy.png" alt="zd"  style="width:100%;">
+
+
+                <p>
+                    Samego bota możemy spytać o wszystko a on odpowie nam na wszystko.
+                </p>
+
+
+
+
+                <img src="psycha pytanie.png" style="width:90%">
+
+                <p>
+                    Robot sprawdza się we wszystkich pytaniach nie miałem jeszcze pytania na które by mi nie odpowiedział.
+                </p>
+            </div>
+
+  
+        </div>
+
+    </body>
+</html>
